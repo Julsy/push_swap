@@ -6,7 +6,7 @@
 /*   By: iiliuk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 10:52:13 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/01 14:28:15 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/02 15:11:11 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
+void				ft_print_memory(const void *addr, size_t size);
+void				*ft_realloc(void *ptr, size_t size);
 
 /*
 ** Put
@@ -67,8 +69,7 @@ void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr(long long n);
 void				ft_putnbr_fd(int n, int fd);
-void				ft_print_memory(const void *addr, size_t size);
-void				*ft_realloc(void *ptr, size_t size);
+void				ft_print_int_array(int *array, int arr_size);
 
 /*
 ** Str

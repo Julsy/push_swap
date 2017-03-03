@@ -6,7 +6,7 @@
 #    By: iiliuk <iiliuk@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/27 17:42:31 by iiliuk            #+#    #+#              #
-#    Updated: 2017/03/01 15:57:49 by iiliuk           ###   ########.fr        #
+#    Updated: 2017/03/02 10:09:04 by iiliuk           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 ft_lstmap.c ft_list_size.c ft_list_add_back.c ft_list_last.c \
 ft_list_push_params.c ft_list_nth.c ft_list_reverse.c ft_realloc.c ft_abs.c \
 ft_itoa_base.c ft_strndup.c ft_itoa_unbase.c ft_lstdelcont.c ft_lst_free_cont.c \
-ft_print_list.c get_next_line.c
+ft_print_list.c get_next_line.c ft_print_int_array.c
 
 .PHONY: all clean fclean re
 

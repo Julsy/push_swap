@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:59:28 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/01 18:18:59 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/02 15:51:04 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,22 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+// DELETE ME !!!!!!!!!!
+#include <stdio.h>
 
 typedef struct	s_stack
 {
 	int 		*stack_a;
 	int 		*stack_b;
 	int			total_size;
-	int			stack_a_size;
-	int			stack_b_size;
+	int			a_size;
+	int			b_size;
 }				t_stack;
+
+void 	apply_sa(t_stack *stack);
+void 	apply_sb(t_stack *stack);
+void 	apply_ss(t_stack *stack);
+void 	apply_pa(t_stack *stack);
 
 #endif
 

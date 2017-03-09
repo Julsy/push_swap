@@ -30,6 +30,15 @@ void 	apply_sa(t_stack *stack);
 void 	apply_sb(t_stack *stack);
 void 	apply_ss(t_stack *stack);
 void 	apply_pa(t_stack *stack);
+void 	apply_pb(t_stack *stack);
+void 	apply_ra(t_stack *stack);
+void 	apply_rb(t_stack *stack);
+void 	apply_rr(t_stack *stack);
+void 	apply_rra(t_stack *stack);
+void 	apply_rrb(t_stack *stack);
+void 	apply_rrr(t_stack *stack);
+
+void	easy_sort(t_stack *stack);
 
 #endif
 

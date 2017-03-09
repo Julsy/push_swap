@@ -15,7 +15,7 @@ NAME2	= checker
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-SRC1 	= push_swap.c apply_instr.c
+SRC1 	= push_swap.c apply_instr.c easy_sort.c
 
 SRC2 	= 
 

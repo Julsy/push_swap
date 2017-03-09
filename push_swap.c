@@ -8,12 +8,15 @@ static int	validate_args(char **argv, char *arg, int start)
 	if (ft_atoi(arg) > INT32_MAX || ft_atoi(arg) < INT32_MIN)
 		return (0);
 	while (*arg && arg[++i] != '\0')
-		if (!ft_isdigit(arg[i]))
+		if (arg[i] != '-' && !ft_isdigit(arg[i]))
 			return (0);
 	while (argv[start] && argv && arg)
 	{
-		if (ft_strnstr(argv[start], arg, ft_strlen(arg)))
+		if (ft_strequ(argv[start], arg))
+		{
+			printf("duplicates!\n");
 			return (0);
+		}
 		start++;
 	}
 	return (1);
@@ -41,7 +44,7 @@ t_stack		*parse_args(int argc, char **argv)
 		if (validate_args(argv, argv[i], i + 1))
 			stack->stack_a[i - 1] = ft_atoi(argv[i]);
 		else
-			return (0);
+			return (NULL);
 	}
 	return (stack);
 }
@@ -53,16 +56,19 @@ int			main(int argc, char **argv)
 	if (argc <= 1)
 		exit(0);
 	stack = parse_args(argc - 1, argv);
+	if(!stack)
+		return (-1);
 	ft_print_int_array(stack->stack_a, stack->a_size);
-	stack->stack_b[0] = 1;
-	stack->stack_b[1] = 3;
-	stack->stack_b[2] = 5;
-	stack->stack_b[3] = 0;
-	stack->b_size = 4;
-	ft_print_int_array(stack->stack_b, stack->b_size);
-	apply_pa(stack);
+	easy_sort(stack);
+	// stack->stack_b[0] = 1;
+	// stack->stack_b[1] = 3;
+	// stack->stack_b[2] = 5;
+	// stack->stack_b[3] = 0;
+	// stack->b_size = 4;
+	// ft_print_int_array(stack->stack_b, stack->b_size);
+	// apply_pa(stack);
 	ft_print_int_array(stack->stack_a, stack->a_size);
-	ft_print_int_array(stack->stack_b, stack->b_size);
+	// ft_print_int_array(stack->stack_b, stack->b_size);
 	// sort_stacks();
 	// exec_commands();
 	// free(stack);

@@ -46,7 +46,7 @@ void 	apply_pa(t_stack *stack)
 
 	if (stack->b_size == 0)
 		return ;
-	i = stack->a_size - 1;
+	i = stack->a_size;
 	while (i-- > 0)
 		stack->stack_a[i + 1] = stack->stack_a[i];
 	stack->stack_a[0] = stack->stack_b[0];
@@ -68,8 +68,89 @@ void 	apply_pb(t_stack *stack)
 		stack->stack_b[i + 1] = stack->stack_b[i];
 	stack->stack_b[0] = stack->stack_a[0];
 	i = 0;
-	while (i++ <= stack->a_size)
+	while (i++ <= stack->a_size - 1)
 		stack->stack_a[i - 1] = stack->stack_a[i];
-	stack->a_size++;
-	stack->b_size--;
+	stack->b_size++;
+	stack->a_size--;
 }
+
+void 	apply_ra(t_stack *stack)
+{
+	int i;
+	int tmp;
+
+	if (stack->a_size == 0)
+		return ;
+	i = stack->a_size - 1;
+	tmp = stack->stack_a[i];
+	while (i > 0) 
+	{
+		stack->stack_a[i] = stack->stack_a[i - 1];
+		i--;
+	}
+	stack->stack_a[0] = tmp;
+}
+
+void 	apply_rb(t_stack *stack)
+{
+	int i;
+	int tmp;
+
+	if (stack->b_size == 0)
+		return ;
+	i = stack->b_size - 1;
+	tmp = stack->stack_b[i];
+	while (i > 0) 
+	{
+		stack->stack_b[i] = stack->stack_b[i - 1];
+		i--;
+	}
+	stack->stack_b[0] = tmp;
+}
+
+void 	apply_rr(t_stack *stack)
+{
+	apply_ra(stack);
+	apply_rb(stack);
+}
+
+void 	apply_rra(t_stack *stack)
+{
+	int i;
+	int tmp;
+
+	if (stack->a_size == 0)
+		return ;
+	i = 0;
+	tmp = stack->stack_a[0];
+	while (i < stack->a_size) 
+	{
+		stack->stack_a[i - 1] = stack->stack_a[i];
+		i++;
+	}
+	stack->stack_a[i - 1] = tmp;
+}
+
+void 	apply_rrb(t_stack *stack)
+{
+	int i;
+	int tmp;
+
+	if (stack->b_size == 0)
+		return ;
+	i = 0;
+	tmp = stack->stack_b[0];
+	while (i < stack->b_size) 
+	{
+		stack->stack_b[i - 1] = stack->stack_b[i];
+		i++;
+	}
+	stack->stack_b[i - 1] = tmp;
+}
+
+void 	apply_rrr(t_stack *stack)
+{
+	apply_rra(stack);
+	apply_rrb(stack);
+}
+

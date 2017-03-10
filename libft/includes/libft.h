@@ -6,7 +6,7 @@
 /*   By: iiliuk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 10:52:13 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/02 15:11:11 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/09 16:52:42 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include <string.h>
 # include <stddef.h>
 # include <stdint.h>
+# include "ft_printf.h"
+# include "get_next_line.h"
 
-# define BUFF_SIZE 42
+# define BUFF_SIZE 5000
 
 typedef struct		s_list
 {

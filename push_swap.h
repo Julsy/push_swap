@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:59:28 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/02 15:51:04 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/09 16:26:35 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct	s_stack
 	int			total_size;
 	int			a_size;
 	int			b_size;
+	int			print;
+	int			total_instr;
 }				t_stack;
 
 void 	apply_sa(t_stack *stack);
@@ -39,6 +41,14 @@ void 	apply_rrb(t_stack *stack);
 void 	apply_rrr(t_stack *stack);
 
 void	easy_sort(t_stack *stack);
+void	sort(t_stack *stack);
+void	sort_3(t_stack *stack);
+void	sort_5(t_stack *stack);
+
+int		is_sorted(t_stack *stack);
+void	free_stack(t_stack *stack);
+
+t_stack	*parse_args(int argc, char **argv);
 
 #endif
 

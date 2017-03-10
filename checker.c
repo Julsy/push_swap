@@ -34,8 +34,20 @@ int			main(int argc, char **argv)
 	t_stack *stack;
 	char 	*instr;
 
-	stack = parse_args(argc - 1, argv);
-	//stack->print = 0;
+	(argc-- == 1) ? exit(0) : argv++;
+	if (argc == 1)
+	{
+		argv = ft_strsplit(argv[0], ' ');
+		argc = 0;
+		while (argv && argv[argc])
+			argc++;
+		(argc == 0) ? ft_printf("Error\n") : (0);
+	}
+	stack = parse_args(argc, argv);
+	if(!stack)
+		return (-1);
+	ft_print_int_array(stack->stack_a, stack->a_size);
+	stack->print = 0;
 	while (get_next_line(0, &instr) > 0)
 	{
 		if (ft_strequ(instr, ""))
@@ -50,6 +62,7 @@ int			main(int argc, char **argv)
 		free(instr);
 	}
 	free(instr);
+	ft_print_int_array(stack->stack_a, stack->a_size);
 	if (is_sorted(stack))
 		ft_putstr("OK\n");
 	else

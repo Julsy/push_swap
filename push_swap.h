@@ -28,6 +28,14 @@ typedef struct	s_stack
 	int			total_instr;
 }				t_stack;
 
+typedef struct	s_moves
+{
+	int			elem;
+	int			a_moves;
+	int			b_moves;
+	int			total;
+}				t_moves;
+
 void 	apply_sa(t_stack *stack);
 void 	apply_sb(t_stack *stack);
 void 	apply_ss(t_stack *stack);
@@ -44,11 +52,15 @@ void	easy_sort(t_stack *stack);
 void	sort(t_stack *stack);
 void	sort_3(t_stack *stack);
 void	sort_5(t_stack *stack);
+void	merge_sort(t_stack *stack);
+void	place_smallest_first(t_stack *stack);
 
 int		is_sorted(t_stack *stack);
 void	free_stack(t_stack *stack);
 
 t_stack	*parse_args(int argc, char **argv);
+
+void	push_to_b(t_stack *stack);
 
 #endif
 

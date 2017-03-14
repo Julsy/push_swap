@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:59:28 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/09 16:26:35 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/13 19:00:49 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct	s_moves
 {
 	int			elem;
 	int			a_moves;
+	char		*a_rot_type;
+	char		*b_rot_type;
 	int			b_moves;
 	int			total;
 }				t_moves;
@@ -50,12 +52,18 @@ void 	apply_rrr(t_stack *stack);
 
 void	easy_sort(t_stack *stack);
 void	sort(t_stack *stack);
+void	global_sort(t_stack *stack);
 void	sort_3(t_stack *stack);
 void	sort_5(t_stack *stack);
 void	merge_sort(t_stack *stack);
 void	place_smallest_first(t_stack *stack);
+int 	find_min_elem(int *stack, int stack_len);
+int 	find_max_elem(int *stack, int stack_len);
+void	place_smallest_first_a(t_stack *stack);
+void	place_smallest_first_b(t_stack *stack);
+void	place_biggest_first_b(t_stack *stack);
 
-int		is_sorted(t_stack *stack);
+int		is_sorted(int *stack, int len);
 void	free_stack(t_stack *stack);
 
 t_stack	*parse_args(int argc, char **argv);

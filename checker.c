@@ -63,7 +63,7 @@ int			main(int argc, char **argv)
 	}
 	free(instr);
 	ft_print_int_array(stack->stack_a, stack->a_size);
-	if (is_sorted(stack))
+	if (is_sorted(stack->stack_a, stack->a_size))
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");

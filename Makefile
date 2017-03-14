@@ -6,7 +6,7 @@
 #    By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/02 12:28:41 by iiliuk            #+#    #+#              #
-#    Updated: 2017/03/09 16:32:52 by iiliuk           ###   ########.fr        #
+#    Updated: 2017/03/13 19:01:39 by iiliuk           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS 	= -Wall -Wextra -Werror
 SRC1 	= push_swap.c parse_args.c apply_instr.c easy_sort.c \
 global_sort.c stack_manipulations.c
 
-SRC2 	= checker.c parse_args.c apply_instr.c easy_sort.c stack_manipulations.c
+SRC2 	= checker.c parse_args.c apply_instr.c easy_sort.c \
+global_sort.c stack_manipulations.c
 
 .PHONY: all clean fclean re
 

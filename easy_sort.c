@@ -144,9 +144,9 @@ void	easy_sort(t_stack *stack)
 
 void	sort_3(t_stack *stack)
 {
-	place_smallest_first_a(stack);
-	while (!(is_sorted(stack->stack_a, stack->a_size) && stack->b_size != 0))
+	while (!(is_sorted(stack->stack_a, stack->a_size)))
 	{
+		place_smallest_first_a(stack);
 		if (stack->stack_a[1] > stack->stack_a[2])
 			apply_ra(stack);
 		else
@@ -157,16 +157,12 @@ void	sort_3(t_stack *stack)
 
 void	sort_5(t_stack *stack)
 {
-	while (!(is_sorted(stack->stack_a, stack->a_size) && stack->b_size != 0))
-	{
-		place_smallest_first_a(stack);
-		if (stack->stack_a[1] > stack->stack_a[2])
-			apply_ra(stack);
-		else
-			apply_rra(stack);
-		// if (stack->stack_a[0] > stack->stack_a[1])
-		// 	apply_sa(stack);
-	}
+	apply_pb(stack);
+	apply_pb(stack);
+	sort_3(stack);
+	ft_print_int_array(stack->stack_a, stack->a_size);
+	ft_print_int_array(stack->stack_b, stack->b_size);
+	insert_back_to_a(stack);
 }
 
 void	merge_sort_a(t_stack *stack)
@@ -245,8 +241,8 @@ void	sort(t_stack *stack)
 		return (apply_sa(stack));
 	else if (stack->total_size == 3)
 		return (sort_3(stack));
-//	else if (stack->total_size == 5)
-//		return (sort_5(stack));
+	else if (stack->total_size == 5)
+		return (sort_5(stack));
 	else
 		global_sort(stack);
 }

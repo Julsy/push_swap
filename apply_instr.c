@@ -90,7 +90,7 @@ void 	apply_pb(t_stack *stack)
 	stack->total_instr++;
 }
 
-void 	apply_ra(t_stack *stack)
+void 	apply_rra(t_stack *stack)
 {
 	int i;
 	int tmp;
@@ -106,11 +106,11 @@ void 	apply_ra(t_stack *stack)
 	}
 	stack->stack_a[0] = tmp;
 	if (stack->print)
-		ft_printf("ra\n");
+		ft_printf("rra\n");
 	stack->total_instr++;
 }
 
-void 	apply_rb(t_stack *stack)
+void 	apply_rrb(t_stack *stack)
 {
 	int i;
 	int tmp;
@@ -126,7 +126,7 @@ void 	apply_rb(t_stack *stack)
 	}
 	stack->stack_b[0] = tmp;
 	if (stack->print)
-		ft_printf("rb\n");
+		ft_printf("rrb\n");
 	stack->total_instr++;
 }
 
@@ -140,7 +140,7 @@ void 	apply_rr(t_stack *stack)
 	stack->total_instr++;
 }
 
-void 	apply_rra(t_stack *stack)
+void 	apply_ra(t_stack *stack)
 {
 	int i;
 	int tmp;
@@ -156,11 +156,11 @@ void 	apply_rra(t_stack *stack)
 	}
 	stack->stack_a[i - 1] = tmp;
 	if (stack->print)
-		ft_printf("rra\n");
+		ft_printf("ra\n");
 	stack->total_instr++;
 }
 
-void 	apply_rrb(t_stack *stack)
+void 	apply_rb(t_stack *stack)
 {
 	int i;
 	int tmp;
@@ -176,7 +176,7 @@ void 	apply_rrb(t_stack *stack)
 	}
 	stack->stack_b[i - 1] = tmp;
 	if (stack->print)
-		ft_printf("rrb\n");
+		ft_printf("rb\n");
 	stack->total_instr++;
 }
 

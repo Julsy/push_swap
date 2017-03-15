@@ -124,10 +124,10 @@ void	place_biggest_first_b(t_stack *stack)
 
 	while ((max_index = find_max_index(stack->stack_b, stack->b_size)) != 0)
 	{
-		if (max_index <= stack->b_size / 2)
-			apply_rrb(stack);
-		else
+		if (max_index < stack->b_size / 2)
 			apply_rb(stack);
+		else
+			apply_rrb(stack);
 	}
 }
 

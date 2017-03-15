@@ -68,6 +68,7 @@ void	insert_back_to_a(t_stack *stack);
 int		where_to_insert(int *stack, int len, int elem, char **rot_type);
 
 int		is_sorted(int *stack, int len);
+int		is_reverse_sorted(int *stack, int len);
 void	free_stack(t_stack *stack);
 
 t_stack	*parse_args(int argc, char **argv);

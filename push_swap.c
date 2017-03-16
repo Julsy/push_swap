@@ -17,11 +17,9 @@ int			main(int argc, char **argv)
 	if(!stack)
 		return (-1);
 	ft_print_int_array(stack->stack_a, stack->a_size);
-	//merge_sort(stack);
 	sort(stack);
 	ft_print_int_array(stack->stack_a, stack->a_size);
 	printf("Total: %d\n", stack->total_instr);
-	// exec_commands();
 	free(stack);
 	return (0);
 }

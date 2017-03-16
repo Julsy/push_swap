@@ -6,7 +6,7 @@
 #include "push_swap.h"
 
 int		all_the_way_front(int len, int pos, char **a_rot_type)
-{
+{	
 	if (pos > len / 2)
 	{
 		*a_rot_type = ft_strcpy(*a_rot_type, "rra");
@@ -24,52 +24,40 @@ int		find_placement(int *stack, int len, int elem, char **rot_type)
 	int i;
 	int min;
 	int max;
+	int place;
 
 	i = 0;
+	place = 0;
 	min = find_min_elem(stack, len);
 	max = find_max_elem(stack, len);
 
-	printf("\nfind place in B for %d?\n", elem);
+	//printf("\nfind place in B for %d?\n", elem);
+	//printf("stack[max=%d]=%d, stack[min=%d]=%d\n", max, stack[max], min, stack[min]);
 
-	if ((elem > stack[0] && max == 0) || (elem < stack[len - 1] && min == len - 1))
-		return (0);
-
+	if (len == 2 && elem > stack[0] && elem < stack[len - 1])
+		place = 0;
+	else if (len == 2 && elem < stack[0] && elem > stack[len - 1])
+		place = 1;
+	else if (elem > stack[max] || elem < stack[min])
+		place = max;
 	while (i < len)
 	{
-		printf("%d vs %d:%d or %d:%d\n", elem, stack[i], stack[i + 1], stack[i], stack[i - 1]);
-		if ((elem < stack[i] && min == i) || (elem > stack[i] && max == i))
+		if(elem < stack[i] && elem > stack[i + 1])
 		{
-			if (i > len / 2)
-			{
-				*rot_type = ft_strcpy(*rot_type, "rrb");
-				printf("smaller than min/bigger than max: %d\n", len - i);
-				return (len - i);
-			}
-			else
-			{
-				*rot_type = ft_strcpy(*rot_type, "rb");
-				printf("smaller than min/bigger than max: %d\n", i);
-				return (i);
-			}
-		}
-		if (elem < stack[i] && elem > stack[i + 1])
-		{
-			if (i > len / 2)
-			{
-				*rot_type = ft_strcpy(*rot_type, "rrb");
-				printf("place %d before %d using RRB\n", elem, stack[len - i + 1]);
-				return (len - i + 1);
-			}
-			else
-			{
-				*rot_type = ft_strcpy(*rot_type, "rb");
-				printf("place %d before %d using RB\n", elem, stack[i + 1]);
-				return (i + 1);
-			}
+			place = i + 1;
+			break ;
 		}
 		i++;
 	}
-	return (0);
+	if (place < len / 2)
+		*rot_type = ft_strcpy(*rot_type, "rb");
+	else
+	{
+		place = len - place;
+		*rot_type = ft_strcpy(*rot_type, "rrb");
+	}
+	//printf("place=%d\n", place);
+	return (place);
 }
 
 int		where_to_insert(int *stack, int len, int elem, char **rot_type)
@@ -77,53 +65,43 @@ int		where_to_insert(int *stack, int len, int elem, char **rot_type)
 	int i;
 	int min;
 	int max;
+	int place;
 
 	i = 0;
 	min = find_min_elem(stack, len);
 	max = find_max_elem(stack, len);
 
-	printf("\nwhere to insert %d?\n", elem);
+	//printf("\nwhere to insert %d?\n", elem);
 
-	if ((elem < stack[0] && min == 0) ||
-		(elem > stack[len - 1] && max == len - 1))
+	if (len == 2 && elem > stack[0] && elem < stack[1])
+		return (1);
+	else if (len == 2 && elem < stack[0] && elem > stack[1])
 		return (0);
+	else if (elem > stack[max] || elem < stack[min])
+		place = min;
 
 	while (i < len)
 	{
-		printf("%d vs %d:%d or %d:%d\n", elem, stack[i], stack[i + 1], stack[i], stack[i - 1]);
-		if ((elem < stack[i] && min == i) || (elem > stack[i] && max == i))
+		printf("elem %d vs %d:%d\n", elem, stack[i], (i+1<len)?stack[i + 1]:stack[0]);
+		if (elem > stack[i] && ((i + 1<len && elem < stack[i + 1]) || (i+1==len && elem < stack[0])))
 		{
-			if (i > len / 2)
-			{
-				*rot_type = ft_strcpy(*rot_type, "rra");
-				printf("smaller than min/bigger than max: %d\n", len - i);
-				return (len - i);
-			}
-			else
-			{
-				*rot_type = ft_strcpy(*rot_type, "ra");
-				printf("smaller than min/bigger than max: %d\n", i);
-				return (i);
-			}
-		}
-		if (elem > stack[i] && elem < stack[i + 1])
-		{
-			if (i + 1 > len / 2)
-			{
-				*rot_type = ft_strcpy(*rot_type, "rra");
-				printf("standard return RRA %d\n", i - 1);
-				return (i - 1);
-			}
-			else
-			{
-				*rot_type = ft_strcpy(*rot_type, "ra");
-				printf("standard return RA %d\n", len - i + 1);
-				return (len - i + 1);
-			}
+			place = i+1;
+			break ;
 		}
 		i++;
 	}
-	return (0);
+	if (place > len / 2)
+	{
+		*rot_type = ft_strcpy(*rot_type, "rra");
+		//printf("standard return RRA %d\n", i);
+		return (len - place);
+	}
+	else
+	{
+		*rot_type = ft_strcpy(*rot_type, "ra");
+		//printf("standard return RA %d\n", len - i);
+	}
+	return (place);
 }
 
 int 	num_cmp(int a, int b)
@@ -166,7 +144,7 @@ t_moves	*calc_moves_from_a_to_b(t_stack *stack, int pos)
 	moves->a_moves = all_the_way_front(stack->a_size, pos, &(moves->a_rot_type));
 	moves->b_moves = find_placement(stack->stack_b, stack->b_size, stack->stack_a[pos], &(moves->b_rot_type));
 	moves->common_moves = find_common(moves);
-	moves->total = moves->a_moves + moves->b_moves + 1;
+	moves->total = moves->a_moves + moves->b_moves + moves->common_moves + 1;
 	return (moves);
 }
 
@@ -189,7 +167,7 @@ t_moves	*best_way_from_a_to_b(t_stack *stack)
 		}
 		else
 			free(moves);
-		printf("check best_move: elem %d, a: %d, b: %d, total: %d\n", stack->stack_a[i], moves->a_moves, moves->b_moves, moves->total);
+		//printf("check best_move: elem %d, a: %d, b: %d, total: %d\n", stack->stack_a[i], moves->a_moves, moves->b_moves, moves->total);
 		i++;
 	}
 	return (best_move);
@@ -214,13 +192,12 @@ void	insert_back_to_a(t_stack *stack)
 				apply_rra(stack);
 			num_of_rots--;
 		}
-		ft_print_int_array(stack->stack_a, stack->a_size);
+		//ft_print_int_array(stack->stack_a, stack->a_size);
 		apply_pa(stack);
 		ft_print_int_array(stack->stack_a, stack->a_size);
 		ft_print_int_array(stack->stack_b, stack->b_size);
 	}
-	while (!is_sorted(stack->stack_a, stack->a_size))
-		place_smallest_first_a(stack);
+	place_smallest_first_a(stack);
 	free(rot_type);
 }
 
@@ -229,17 +206,14 @@ void		global_sort(t_stack *stack)
 	t_moves *best_move;
 
 	while (stack->b_size != 2)
-	{
 		apply_pb(stack);
-		place_biggest_first_b(stack);
-	}
-	ft_print_int_array(stack->stack_a, stack->a_size);
-	ft_print_int_array(stack->stack_b, stack->b_size);
+	//ft_print_int_array(stack->stack_a, stack->a_size);
+	//ft_print_int_array(stack->stack_b, stack->b_size);
 	while (stack->a_size > 2)
 	{
 		best_move = best_way_from_a_to_b(stack);
-		printf("best move chosen: %d\n", best_move->elem);
-		printf("common moves? %d\n", best_move->common_moves);
+		//printf("best move chosen: %d\n", best_move->elem);
+		//printf("common moves? %d\n", best_move->common_moves);
 		while (best_move->common_moves)
 		{
 			if (ft_strequ(best_move->common_rot, "rr"))
@@ -256,7 +230,7 @@ void		global_sort(t_stack *stack)
 				apply_rra(stack);
 			best_move->a_moves--;
 		}
-		printf("rotate b %d times\n", best_move->b_moves);
+		//printf("rotate b %d times\n", best_move->b_moves);
 		while (best_move->b_moves)
 		{
 			if (ft_strequ(best_move->b_rot_type, "rb"))
@@ -266,11 +240,8 @@ void		global_sort(t_stack *stack)
 			best_move->b_moves--;
 		}
 		apply_pb(stack);
-		ft_print_int_array(stack->stack_b, stack->b_size);
+//		ft_print_int_array(stack->stack_b, stack->b_size);
 	}
-	while (!is_reverse_sorted(stack->stack_b, stack->b_size))
-		place_biggest_first_b(stack);
-	place_smallest_first_a(stack);
 	ft_print_int_array(stack->stack_a, stack->a_size);
 	ft_print_int_array(stack->stack_b, stack->b_size);
 	printf("\nInserting back in A\n");

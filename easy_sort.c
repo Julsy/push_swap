@@ -97,7 +97,7 @@ void	place_smallest_first_a(t_stack *stack)
 	int 	min_index;
 
 	min_index = find_min_index(stack->stack_a, stack->a_size);
-	if (min_index < stack->a_size / 2)
+	if (min_index <= stack->a_size / 2)
 		while (min_index--)
 			apply_ra(stack);
 	else
@@ -108,31 +108,32 @@ void	place_smallest_first_a(t_stack *stack)
 		}
 }
 
-// void	place_smallest_first_b(t_stack *stack)
-// {
-// 	int 	min_index;
-
-// 	while ((min_index = find_min_index(stack->stack_b, stack->b_size)) != 0)
-// 	{
-// 		if (min_index <= stack->b_size / 2)
-// 			apply_rrb(stack);
-// 		else
-// 			apply_rb(stack);
-// 	}
-// }
-
 void	place_biggest_first_b(t_stack *stack)
 {
 	int 	max_index;
 
 	while ((max_index = find_max_index(stack->stack_b, stack->b_size)) != 0)
 	{
-		if (max_index < stack->b_size / 2)
+		if (max_index <= stack->b_size / 2)
 			apply_rb(stack);
 		else
 			apply_rrb(stack);
 	}
 }
+
+void	place_biggest_first_a(t_stack *stack)
+{
+	int 	max_index;
+
+	while ((max_index = find_max_index(stack->stack_a, stack->a_size)) != 0)
+	{
+		if (max_index <= stack->a_size / 2)
+			apply_ra(stack);
+		else
+			apply_rra(stack);
+	}
+}
+
 
 // void	easy_sort(t_stack *stack)
 // {
@@ -222,23 +223,12 @@ void	merge_sort_b(t_stack *stack)
 
 void	merge_sort(t_stack *stack)
 {
-	int min;
-	int max;
-
+	place_biggest_first_a(stack);
 	while (stack->a_size > 3)
 		apply_pb(stack);
 	merge_sort_a(stack);
 	merge_sort_b(stack);
-	while (stack->b_size > 0)
-	{
-		min = find_min_elem(stack->stack_a, stack->a_size);
-		max = find_max_elem(stack->stack_a, stack->a_size);
-		if((stack->stack_b[0] < stack->stack_a[0]) ||
-			(stack->stack_b[0] > stack->stack_a[max] &&
-			stack->stack_a[0] == stack->stack_a[min]))
-			apply_pa(stack);
-		apply_ra(stack); 
-	}
+	insert_back_to_a(stack);
 	place_smallest_first_a(stack);
 }
 

@@ -132,11 +132,15 @@ void 	apply_rrb(t_stack *stack)
 
 void 	apply_rr(t_stack *stack)
 {
+	int tmp;
+
+	tmp = stack->print;
 	stack->print = 0;
 	apply_ra(stack);
 	apply_rb(stack);
-	stack->print = 1;
-	ft_printf("rr\n");
+	stack->print = tmp;
+	if (stack->print)
+		ft_printf("rr\n");
 	stack->total_instr++;
 }
 
@@ -182,11 +186,15 @@ void 	apply_rb(t_stack *stack)
 
 void 	apply_rrr(t_stack *stack)
 {
+	int tmp;
+
+	tmp = stack->print;
 	stack->print = 0;
 	apply_rra(stack);
 	apply_rrb(stack);
-	stack->print = 1;
-	ft_printf("rrr\n");
+	stack->print = tmp;
+	if (stack->print)
+		ft_printf("rrr\n");
 	stack->total_instr++;
 }
 

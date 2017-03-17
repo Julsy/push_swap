@@ -75,6 +75,7 @@ void	free_moves(t_moves *moves);
 
 void	init_stack_struct(t_stack *stack, int argc);
 int		parse_options(int argc, char **argv, t_stack *stack);
+int		parse_options2(int *argc, char ***argv, t_stack *stack);
 t_stack	*parse_args(int argc, char **argv, t_stack *stack);
 
 void	push_to_b(t_stack *stack);

@@ -65,7 +65,6 @@ int			main(int argc, char **argv)
 {
 	t_stack *stack;
 	int		options;
-
 	(argc-- == 1) ? exit(0) : argv++;
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	options = parse_options(argc, argv, stack);
@@ -86,6 +85,7 @@ int			main(int argc, char **argv)
 	init_stack_struct(stack, argc);
 	stack = parse_args(argc, argv, stack);
 	//ft_print_int_array(stack->stack_a, stack->a_size);
+	stack->print=0;
 	if (!(is_sorted(stack->stack_a, stack->a_size)))
 		do_instruction(stack);
 	//ft_print_int_array(stack->stack_a, stack->a_size);

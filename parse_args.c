@@ -43,6 +43,33 @@ void		init_stack_struct(t_stack *stack, int argc)
 	stack->total_instr = 0;
 }
 
+int			parse_options2(int *argc, char ***argv, t_stack *stack)
+{
+	int i;
+
+	i = 0;
+	stack->print = 0;
+	stack->color = 0;
+	while (i < *argc  && *((*argv)[i]) == '-')
+	{
+		if (ft_strequ((*argv)[i], "-v"))
+			stack->print = 1;
+		else if (ft_strequ((*argv)[i], "-c"))
+			stack->color = 1;
+		else
+		{
+			ft_putstr_fd("Error\n", 2);
+			ft_putstr_fd("usage: ./push_swap or ./checker [-v -c] [numbers...]\n", 2);
+			exit(1);
+		}
+		i++;
+	}
+	stack->print = 1;//!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	*argc -= i;
+	*argv += i;
+	return (i);
+}
+
 int			parse_options(int argc, char **argv, t_stack *stack)
 {
 	int i;
@@ -64,7 +91,6 @@ int			parse_options(int argc, char **argv, t_stack *stack)
 		}
 		i++;
 	}
-	stack->a_size -= i;
 	return (i);
 }
 

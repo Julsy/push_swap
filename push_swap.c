@@ -19,9 +19,7 @@ int			main(int argc, char **argv)
 
 	(argc-- == 1) ? exit(0) : argv++;
 	stack = (t_stack *)malloc(sizeof(t_stack));
-	options = parse_options(argc, argv, stack);
-	argc -= options;
-	argv += options;
+	options = parse_options2(&argc, &argv, stack);
 	if (argc == 1)
 	{
 		argv = ft_strsplit(argv[0], ' ');
@@ -36,10 +34,10 @@ int			main(int argc, char **argv)
 	}
 	init_stack_struct(stack, argc);
 	stack = parse_args(argc, argv, stack);
-	ft_print_int_array(stack->stack_a, stack->a_size);
+	//ft_print_int_array(stack->stack_a, stack->a_size);
 	sort(stack);
-	ft_print_int_array(stack->stack_a, stack->a_size);
-	printf("Total: %d\n", stack->total_instr);
+	//ft_print_int_array(stack->stack_a, stack->a_size);
+	//printf("Total: %d\n", stack->total_instr);
 	free_stack(stack);
 	return (0);
 }

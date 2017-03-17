@@ -82,7 +82,7 @@ int		where_to_insert(int *stack, int len, int elem, char **rot_type)
 
 	while (i < len)
 	{
-		printf("elem %d vs %d:%d\n", elem, stack[i], (i+1<len)?stack[i + 1]:stack[0]);
+		//printf("elem %d vs %d:%d\n", elem, stack[i], (i+1<len)?stack[i + 1]:stack[0]);
 		if (elem > stack[i] && ((i + 1<len && elem < stack[i + 1]) || (i+1==len && elem < stack[0])))
 		{
 			place = i+1;
@@ -162,11 +162,11 @@ t_moves	*best_way_from_a_to_b(t_stack *stack)
 			best_move = moves;
 		else if (best_move->total > moves->total)
 		{
-			free(best_move);
+			free_moves(best_move);
 			best_move = moves;
 		}
 		else
-			free(moves);
+			free_moves(moves);
 		//printf("check best_move: elem %d, a: %d, b: %d, total: %d\n", stack->stack_a[i], moves->a_moves, moves->b_moves, moves->total);
 		i++;
 	}
@@ -183,7 +183,7 @@ void	insert_back_to_a(t_stack *stack)
 	while (stack->b_size)
 	{
 		num_of_rots = where_to_insert(stack->stack_a, stack->a_size, stack->stack_b[0], &rot_type);
-		printf("num of rots: %d\n", num_of_rots);
+		//printf("num of rots: %d\n", num_of_rots);
 		while (num_of_rots > 0)
 		{
 			if (ft_strequ(rot_type, "ra"))
@@ -194,8 +194,8 @@ void	insert_back_to_a(t_stack *stack)
 		}
 		//ft_print_int_array(stack->stack_a, stack->a_size);
 		apply_pa(stack);
-		ft_print_int_array(stack->stack_a, stack->a_size);
-		ft_print_int_array(stack->stack_b, stack->b_size);
+		//ft_print_int_array(stack->stack_a, stack->a_size);
+		//ft_print_int_array(stack->stack_b, stack->b_size);
 	}
 	place_smallest_first_a(stack);
 	free(rot_type);
@@ -242,9 +242,9 @@ void		global_sort(t_stack *stack)
 		apply_pb(stack);
 //		ft_print_int_array(stack->stack_b, stack->b_size);
 	}
-	ft_print_int_array(stack->stack_a, stack->a_size);
-	ft_print_int_array(stack->stack_b, stack->b_size);
-	printf("\nInserting back in A\n");
+	//ft_print_int_array(stack->stack_a, stack->a_size);
+	//ft_print_int_array(stack->stack_b, stack->b_size);
+	//printf("\nInserting back in A\n");
 	insert_back_to_a(stack);
-	free(best_move);
+	free_moves(best_move);
 }

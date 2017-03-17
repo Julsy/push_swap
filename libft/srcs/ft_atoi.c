@@ -6,17 +6,17 @@
 /*   By: iiliuk <iiliuk@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 17:24:05 by iiliuk            #+#    #+#             */
-/*   Updated: 2016/09/22 17:24:05 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/16 15:35:25 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int i;
-	int nb;
-	int flag;
+	long long i;
+	long long nb;
+	long long flag;
 
 	i = 0;
 	nb = 0;

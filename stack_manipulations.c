@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_manipulations.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/16 16:11:31 by iiliuk            #+#    #+#             */
+/*   Updated: 2017/03/16 16:11:35 by iiliuk           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		is_sorted(int *stack, int len)
@@ -36,4 +48,13 @@ void	free_stack(t_stack *stack)
 	free(stack->stack_b);
 	free(stack);
 	stack = NULL;
+}
+
+void	free_moves(t_moves *moves)
+{
+	free(moves->a_rot_type);
+	free(moves->b_rot_type);
+	free(moves->common_rot);
+	free(moves);
+	moves = NULL;
 }

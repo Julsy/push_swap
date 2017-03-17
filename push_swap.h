@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:59:28 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/13 10:57:42 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/16 18:21:51 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@
 # include "libft.h"
 // DELETE ME !!!!!!!!!!
 #include <stdio.h>
+# include <limits.h>
 
 typedef struct	s_stack
 {
 	int 		*stack_a;
 	int 		*stack_b;
-	int			total_size;
 	int			a_size;
 	int			b_size;
 	int			print;
+	int			color;
 	int			total_instr;
 }				t_stack;
 
@@ -70,8 +71,11 @@ int		where_to_insert(int *stack, int len, int elem, char **rot_type);
 int		is_sorted(int *stack, int len);
 int		is_reverse_sorted(int *stack, int len);
 void	free_stack(t_stack *stack);
+void	free_moves(t_moves *moves);
 
-t_stack	*parse_args(int argc, char **argv);
+void	init_stack_struct(t_stack *stack, int argc);
+int		parse_options(int argc, char **argv, t_stack *stack);
+t_stack	*parse_args(int argc, char **argv, t_stack *stack);
 
 void	push_to_b(t_stack *stack);
 

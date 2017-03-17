@@ -6,7 +6,7 @@
 /*   By: iiliuk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 10:52:13 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/09 16:52:42 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/16 15:34:37 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void				ft_print_list(t_list *list);
 
 ptrdiff_t			ft_abs(ptrdiff_t n);
 char				*ft_itoa(ptrdiff_t n);
-int					ft_atoi(const char *str);
+long long			ft_atoi(const char *str);
 char				*ft_itoa_base(ptrdiff_t value, int base);
 char				*ft_itoa_unbase(unsigned long long nb, unsigned int base);
 

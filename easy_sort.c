@@ -108,18 +108,18 @@ void	place_smallest_first_a(t_stack *stack)
 		}
 }
 
-void	place_smallest_first_b(t_stack *stack)
-{
-	int 	min_index;
+// void	place_smallest_first_b(t_stack *stack)
+// {
+// 	int 	min_index;
 
-	while ((min_index = find_min_index(stack->stack_b, stack->b_size)) != 0)
-	{
-		if (min_index <= stack->b_size / 2)
-			apply_rrb(stack);
-		else
-			apply_rb(stack);
-	}
-}
+// 	while ((min_index = find_min_index(stack->stack_b, stack->b_size)) != 0)
+// 	{
+// 		if (min_index <= stack->b_size / 2)
+// 			apply_rrb(stack);
+// 		else
+// 			apply_rb(stack);
+// 	}
+// }
 
 void	place_biggest_first_b(t_stack *stack)
 {
@@ -134,45 +134,43 @@ void	place_biggest_first_b(t_stack *stack)
 	}
 }
 
-void	easy_sort(t_stack *stack)
-{
-	while (stack->a_size > 0)
-	{
-		place_smallest_first_a(stack);
-		apply_pb(stack);
-	}
-	while (stack->b_size > 0)
-		apply_pa(stack);
-}
+// void	easy_sort(t_stack *stack)
+// {
+// 	while (stack->a_size > 0)
+// 	{
+// 		place_smallest_first_a(stack);
+// 		apply_pb(stack);
+// 	}
+// 	while (stack->b_size > 0)
+// 		apply_pa(stack);
+// }
 
-void	sort_3(t_stack *stack)
-{
-	if (stack->stack_a[0] > stack->stack_a[1])
-			apply_sa(stack);
-	if (!(is_sorted(stack->stack_a, stack->a_size)) &&
-		stack->stack_a[1] > stack->stack_a[2])
-		apply_rra(stack);
-	if (!(is_sorted(stack->stack_a, stack->a_size)))
-		apply_sa(stack);
-	place_smallest_first_a(stack);
-}
+// void	sort_3(t_stack *stack)
+// {
+// 	if (stack->stack_a[0] > stack->stack_a[1])
+// 			apply_sa(stack);
+// 	if (!(is_sorted(stack->stack_a, stack->a_size)) &&
+// 		stack->stack_a[1] > stack->stack_a[2])
+// 		apply_rra(stack);
+// 	if (!(is_sorted(stack->stack_a, stack->a_size)))
+// 		apply_sa(stack);
+// 	place_smallest_first_a(stack);
+// }
 
-void	sort_5(t_stack *stack)
-{
-	apply_pb(stack);
-	apply_pb(stack);
-	sort_3(stack);
-	ft_print_int_array(stack->stack_a, stack->a_size);
-	ft_print_int_array(stack->stack_b, stack->b_size);
-	insert_back_to_a(stack);
-}
+// void	sort_5(t_stack *stack)
+// {
+// 	apply_pb(stack);
+// 	apply_pb(stack);
+// 	sort_3(stack);
+// 	insert_back_to_a(stack);
+// }
 
-void	sort_4(t_stack *stack)
-{
-	apply_pb(stack);
-	sort_3(stack);
-	insert_back_to_a(stack);
-}
+// void	sort_4(t_stack *stack)
+// {
+// 	apply_pb(stack);
+// 	sort_3(stack);
+// 	insert_back_to_a(stack);
+// }
 
 void	merge_sort_a(t_stack *stack)
 {
@@ -229,14 +227,12 @@ void	merge_sort(t_stack *stack)
 
 	while (stack->a_size > 3)
 		apply_pb(stack);
-
 	merge_sort_a(stack);
 	merge_sort_b(stack);
-
 	while (stack->b_size > 0)
 	{
-		min=find_min_elem(stack->stack_a, stack->a_size);
-		max=find_max_elem(stack->stack_a, stack->a_size);
+		min = find_min_elem(stack->stack_a, stack->a_size);
+		max = find_max_elem(stack->stack_a, stack->a_size);
 		if((stack->stack_b[0] < stack->stack_a[0]) ||
 			(stack->stack_b[0] > stack->stack_a[max] &&
 			stack->stack_a[0] == stack->stack_a[min]))
@@ -248,21 +244,10 @@ void	merge_sort(t_stack *stack)
 
 void	sort(t_stack *stack)
 {
-	if (stack->total_size <= 5)
+	if (is_sorted(stack->stack_a, stack->a_size) && stack->b_size == 0)
+		return ;
+	if (stack->a_size <= 5)
 		return (merge_sort(stack));
 	else
 		global_sort(stack);
-
-	// if (is_sorted(stack->stack_a, stack->a_size) && !(stack->b_size == 0))
-	// 	return ;
-	// else if (stack->total_size == 2)
-	// 	return (apply_sa(stack));
-	// else if (stack->total_size == 3)
-	// 	return (sort_3(stack));
-	// else if (stack->total_size == 4)
-	// 	return (sort_4(stack));
-	// else if (stack->total_size == 5)
-	// 	return (merge_sort(stack));
-	// else
-	// 	global_sort(stack);
 }

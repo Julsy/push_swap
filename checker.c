@@ -47,16 +47,17 @@ void		do_instruction(t_stack *stack)
 
 	while (get_next_line(0, &instr) > 0)
 	{
-		if (ft_strequ(instr, ""))
+		if (!instr)
 			break ;
 		if (get_instruction(stack, instr))
 		{
-			free(instr);
-			free_stack(stack);
 			ft_putstr_fd("Error\n", 2);
+			free_stack(stack);
+			free(instr);
 			exit(1);
 		}
 		free(instr);
+		instr = ft_strnew(4);
 	}
 	free(instr);
 }
@@ -79,13 +80,14 @@ int			main(int argc, char **argv)
 		if (argc == 0)
 		{
 			ft_putstr_fd("Error\n", 2);
+			free(stack);
 			exit(1);
 		}
 	}
 	init_stack_struct(stack, argc);
 	stack = parse_args(argc, argv, stack);
 	//ft_print_int_array(stack->stack_a, stack->a_size);
-	stack->print=0;
+	stack->print = 0; //!!!!!!!!!!!!!!!!
 	if (!(is_sorted(stack->stack_a, stack->a_size)))
 		do_instruction(stack);
 	//ft_print_int_array(stack->stack_a, stack->a_size);
@@ -93,7 +95,6 @@ int			main(int argc, char **argv)
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
-	if (stack)
-		free_stack(stack);
+	free_stack(stack);
 	return (0);
 }

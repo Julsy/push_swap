@@ -21,7 +21,7 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 
-# define BUFF_SIZE 5000
+# define BUFF_SIZE 100
 
 typedef struct		s_list
 {

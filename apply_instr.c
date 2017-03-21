@@ -151,7 +151,7 @@ void 	apply_ra(t_stack *stack)
 
 	if (stack->a_size == 0)
 		return ;
-	i = 0;
+	i = 1;
 	tmp = stack->stack_a[0];
 	while (i < stack->a_size) 
 	{
@@ -171,7 +171,7 @@ void 	apply_rb(t_stack *stack)
 
 	if (stack->b_size == 0)
 		return ;
-	i = 0;
+	i = 1;
 	tmp = stack->stack_b[0];
 	while (i < stack->b_size) 
 	{

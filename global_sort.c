@@ -205,7 +205,7 @@ void		global_sort(t_stack *stack)
 {
 	t_moves *best_move;
 
-	while (stack->b_size != 2)
+	while (stack->b_size < 2)
 		apply_pb(stack);
 	//ft_print_int_array(stack->stack_a, stack->a_size);
 	//ft_print_int_array(stack->stack_b, stack->b_size);
@@ -240,11 +240,11 @@ void		global_sort(t_stack *stack)
 			best_move->b_moves--;
 		}
 		apply_pb(stack);
+		free_moves(best_move);
 //		ft_print_int_array(stack->stack_b, stack->b_size);
 	}
 	//ft_print_int_array(stack->stack_a, stack->a_size);
 	//ft_print_int_array(stack->stack_b, stack->b_size);
 	//printf("\nInserting back in A\n");
 	insert_back_to_a(stack);
-	free_moves(best_move);
 }

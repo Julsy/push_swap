@@ -234,8 +234,8 @@ void	merge_sort(t_stack *stack)
 
 void	sort(t_stack *stack)
 {
-	if (is_sorted(stack->stack_a, stack->a_size) && stack->b_size == 0)
-		return ;
+	// if (is_sorted(stack->stack_a, stack->a_size) && stack->b_size == 0)
+	// 	return ;
 	if (stack->a_size <= 5)
 		return (merge_sort(stack));
 	else

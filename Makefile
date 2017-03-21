@@ -6,7 +6,7 @@
 #    By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/02 12:28:41 by iiliuk            #+#    #+#              #
-#    Updated: 2017/03/14 16:05:35 by iiliuk           ###   ########.fr        #
+#    Updated: 2017/03/21 14:24:59 by iiliuk           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@ NAME2	= checker
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-SRC1 	= push_swap.c parse_args.c apply_instr.c easy_sort.c \
-global_sort.c stack_manipulations.c
+SRC1 	= push_swap.c parse_args.c apply_instr.c apply_rr.c apply_rrr.c \
+basic_sort.c global_sort.c stack_manipulations.c sort_helper.c
 
-SRC2 	= checker.c parse_args.c apply_instr.c easy_sort.c \
-global_sort.c stack_manipulations.c
+SRC2 	= checker.c parse_args.c apply_instr.c apply_rr.c apply_rrr.c \
+basic_sort.c global_sort.c stack_manipulations.c sort_helper.c
 
 .PHONY: all clean fclean re
 

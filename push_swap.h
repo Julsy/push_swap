@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:59:28 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/16 18:21:51 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/21 14:51:03 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_stack
 	int			b_size;
 	int			print;
 	int			color;
+	int			total;
 	int			total_instr;
 }				t_stack;
 
@@ -53,18 +54,18 @@ void 	apply_rra(t_stack *stack);
 void 	apply_rrb(t_stack *stack);
 void 	apply_rrr(t_stack *stack);
 
-void	easy_sort(t_stack *stack);
 void	sort(t_stack *stack);
+void	basic_sort(t_stack *stack);
 void	global_sort(t_stack *stack);
-void	sort_3(t_stack *stack);
-void	sort_5(t_stack *stack);
-void	merge_sort(t_stack *stack);
-void	place_smallest_first(t_stack *stack);
+
 int 	find_min_elem(int *stack, int stack_len);
 int 	find_max_elem(int *stack, int stack_len);
+int 	find_min_index(int *stack, int len);
+int 	find_max_index(int *stack, int len);
 void	place_smallest_first_a(t_stack *stack);
-void	place_smallest_first_b(t_stack *stack);
 void	place_biggest_first_b(t_stack *stack);
+void	place_biggest_first_a(t_stack *stack);
+
 void	insert_back_to_a(t_stack *stack);
 int		where_to_insert(int *stack, int len, int elem, char **rot_type);
 
@@ -74,11 +75,8 @@ void	free_stack(t_stack *stack);
 void	free_moves(t_moves *moves);
 
 void	init_stack_struct(t_stack *stack, int argc);
-int		parse_options(int argc, char **argv, t_stack *stack);
-int		parse_options2(int *argc, char ***argv, t_stack *stack);
+int		parse_options(int *argc, char ***argv, t_stack *stack);
 t_stack	*parse_args(int argc, char **argv, t_stack *stack);
-
-void	push_to_b(t_stack *stack);
 
 #endif
 

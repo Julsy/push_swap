@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 13:12:24 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/21 14:36:55 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/21 17:10:11 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void 	apply_sa(t_stack *stack)
 	tmp = stack->stack_a[0];
 	stack->stack_a[0] = stack->stack_a[1];
 	stack->stack_a[1] = tmp;
-	ft_printf("sa\n");
-	if (stack->print)
+	stack->print_instr ? ft_printf("sa\n") : 0;
+	if (stack->print_stack)
 	{
 		ft_printf("A: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);
@@ -44,8 +44,8 @@ void 	apply_sb(t_stack *stack)
 	tmp = stack->stack_b[0];
 	stack->stack_b[0] = stack->stack_b[1];
 	stack->stack_b[1] = tmp;
-	ft_printf("sb\n");
-	if (stack->print)
+	stack->print_instr ? ft_printf("sb\n") : 0;
+	if (stack->print_stack)
 	{
 		ft_printf("A: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);
@@ -60,15 +60,19 @@ void 	apply_sb(t_stack *stack)
 
 void 	apply_ss(t_stack *stack)
 {
-	int tmp;
+	int tmp_instr;
+	int tmp_stack;
 
-	tmp = stack->print;
-	stack->print = 0;
+	tmp_stack = stack->print_stack;
+	tmp_instr = stack->print_instr;
+	stack->print_instr = 0;
+	stack->print_stack = 0;
 	apply_sa(stack);
 	apply_sb(stack);
-	stack->print = tmp;
-	ft_printf("ss\n");
-	if (stack->print)
+	stack->print_instr = tmp_instr;
+	stack->print_stack = tmp_stack;
+	stack->print_instr ? ft_printf("ss\n") : 0;
+	if (stack->print_stack)
 	{
 		ft_printf("A: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);
@@ -96,8 +100,8 @@ void 	apply_pa(t_stack *stack)
 		stack->stack_b[i - 1] = stack->stack_b[i];
 	stack->a_size++;
 	stack->b_size--;
-	ft_printf("pa\n");
-	if (stack->print)
+	stack->print_instr ? ft_printf("pa\n") : 0;
+	if (stack->print_stack)
 	{
 		ft_printf("A: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);
@@ -125,8 +129,8 @@ void 	apply_pb(t_stack *stack)
 		stack->stack_a[i - 1] = stack->stack_a[i];
 	stack->b_size++;
 	stack->a_size--;
-	ft_printf("pb\n");
-	if (stack->print)
+	stack->print_instr ? ft_printf("pb\n") : 0;
+	if (stack->print_stack)
 	{
 		ft_printf("A: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);

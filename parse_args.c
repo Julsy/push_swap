@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:26:09 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/21 14:53:10 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/21 15:17:00 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ int			parse_options(int *argc, char ***argv, t_stack *stack)
 	int i;
 
 	i = 0;
-	stack->print = 0;
 	stack->total = 0;
+	stack->print_stack = 0;
 	while (i < *argc  && *((*argv)[i]) == '-')
 	{
 		if (ft_strequ((*argv)[i], "-v"))
-			stack->print = 1;
+			stack->print_stack = 1;
 		else if (ft_strequ((*argv)[i], "-t"))
 			stack->total = 1;
 		else
@@ -64,6 +64,7 @@ int			parse_options(int *argc, char ***argv, t_stack *stack)
 		}
 		i++;
 	}
+	stack->print_instr = 1;
 	//stack->print = 1;//!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	*argc -= i;
 	*argv += i;

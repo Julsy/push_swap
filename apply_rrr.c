@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 14:17:05 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/21 14:36:25 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/21 17:09:42 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void 	apply_rra(t_stack *stack)
 		i--;
 	}
 	stack->stack_a[0] = tmp;
-	ft_printf("rra\n");
-	if (stack->print)
+	stack->print_instr ? ft_printf("rra\n") : 0;
+	if (stack->print_stack)
 	{
 		ft_printf("A: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);
@@ -56,8 +56,8 @@ void 	apply_rrb(t_stack *stack)
 		i--;
 	}
 	stack->stack_b[0] = tmp;
-	ft_printf("rrb\n");
-	if (stack->print)
+	stack->print_instr ? ft_printf("rrb\n") : 0;
+	if (stack->print_stack)
 	{
 		ft_printf("A: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);
@@ -72,15 +72,19 @@ void 	apply_rrb(t_stack *stack)
 
 void 	apply_rrr(t_stack *stack)
 {
-	int tmp;
+	int tmp_instr;
+	int tmp_stack;
 
-	tmp = stack->print;
-	stack->print = 0;
+	tmp_stack = stack->print_stack;
+	tmp_instr = stack->print_instr;
+	stack->print_instr = 0;
+	stack->print_stack = 0;
 	apply_rra(stack);
 	apply_rrb(stack);
-	stack->print = tmp;
-	ft_printf("rrr\n");
-	if (stack->print)
+	stack->print_instr = tmp_instr;
+	stack->print_stack = tmp_stack;
+	stack->print_instr ? ft_printf("rrr\n") : 0;
+	if (stack->print_stack)
 	{
 		ft_printf("A: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);

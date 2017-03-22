@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 15:59:28 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/21 14:51:03 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/21 15:11:14 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ typedef struct	s_stack
 	int 		*stack_b;
 	int			a_size;
 	int			b_size;
-	int			print;
 	int			color;
 	int			total;
+	int			print_stack;
 	int			total_instr;
+	int			print_instr;
 }				t_stack;
 
 typedef struct	s_moves

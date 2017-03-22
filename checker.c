@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 13:00:39 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/21 14:21:15 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/21 15:10:51 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ int			main(int argc, char **argv)
 	(argc-- == 1) ? exit(0) : argv++;
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	options = parse_options(&argc, &argv, stack);
-	argc -= options;
-	argv += options;
 	if (argc == 1)
 	{
 		argv = ft_strsplit(argv[0], ' ');
@@ -87,7 +85,7 @@ int			main(int argc, char **argv)
 	init_stack_struct(stack, argc);
 	stack = parse_args(argc, argv, stack);
 	//ft_print_int_array(stack->stack_a, stack->a_size);
-	//stack->print = 0; //!!!!!!!!!!!!!!!!
+	stack->print_instr = 0;
 	if (!(is_sorted(stack->stack_a, stack->a_size)))
 		do_instruction(stack);
 	//ft_print_int_array(stack->stack_a, stack->a_size);

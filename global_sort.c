@@ -83,9 +83,10 @@ int		where_to_insert(int *stack, int len, int elem, char **rot_type)
 	while (i < len)
 	{
 		//printf("elem %d vs %d:%d\n", elem, stack[i], (i+1<len)?stack[i + 1]:stack[0]);
-		if (elem > stack[i] && ((i + 1<len && elem < stack[i + 1]) || (i+1==len && elem < stack[0])))
+		if (elem > stack[i] && ((i + 1 < len && elem < stack[i + 1]) ||
+		(i + 1 == len && elem < stack[0])))
 		{
-			place = i+1;
+			place = i + 1;
 			break ;
 		}
 		i++;
@@ -104,14 +105,6 @@ int		where_to_insert(int *stack, int len, int elem, char **rot_type)
 	return (place);
 }
 
-int 	num_cmp(int a, int b)
-{
-	if (a > b)
-		return (b);
-	else
-		return (a);
-}
-
 int		find_common(t_moves *moves)
 {
 	int		common;
@@ -120,7 +113,7 @@ int		find_common(t_moves *moves)
 	if ((ft_strequ(moves->a_rot_type, "rra") && (ft_strequ(moves->b_rot_type , "rrb"))) ||
 			(ft_strequ(moves->a_rot_type, "ra") && (ft_strequ(moves->b_rot_type , "rb"))))
 	{
-		common = num_cmp(moves->a_moves, moves->b_moves);
+		common = (moves->a_moves > moves->b_moves ? moves->b_moves : moves->a_moves);
 		if (common)
 		{
 			moves->common_rot = ft_strcpy(moves->common_rot, moves->a_rot_type);
@@ -142,7 +135,8 @@ t_moves	*calc_moves_from_a_to_b(t_stack *stack, int pos)
 	moves->common_rot = ft_strnew(3);
 	moves->elem = stack->stack_a[pos];
 	moves->a_moves = all_the_way_front(stack->a_size, pos, &(moves->a_rot_type));
-	moves->b_moves = find_placement(stack->stack_b, stack->b_size, stack->stack_a[pos], &(moves->b_rot_type));
+	moves->b_moves = find_placement(stack->stack_b, stack->b_size,
+	stack->stack_a[pos], &(moves->b_rot_type));
 	moves->common_moves = find_common(moves);
 	moves->total = moves->a_moves + moves->b_moves + moves->common_moves + 1;
 	return (moves);
@@ -205,7 +199,7 @@ void		global_sort(t_stack *stack)
 {
 	t_moves *best_move;
 
-	while (stack->b_size < 2)
+	while (stack->b_size != 2)
 		apply_pb(stack);
 	//ft_print_int_array(stack->stack_a, stack->a_size);
 	//ft_print_int_array(stack->stack_b, stack->b_size);
@@ -241,7 +235,7 @@ void		global_sort(t_stack *stack)
 		}
 		apply_pb(stack);
 		free_moves(best_move);
-//		ft_print_int_array(stack->stack_b, stack->b_size);
+		//ft_print_int_array(stack->stack_b, stack->b_size);
 	}
 	//ft_print_int_array(stack->stack_a, stack->a_size);
 	//ft_print_int_array(stack->stack_b, stack->b_size);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   basic_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/21 14:58:59 by iiliuk            #+#    #+#             */
+/*   Updated: 2017/03/21 15:14:20 by iiliuk           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	basic_sort_a(t_stack *stack)
@@ -63,7 +75,7 @@ void		sort(t_stack *stack)
 {
 	if (is_sorted(stack->stack_a, stack->a_size) && stack->b_size == 0)
 		return ;
-	if (stack->print)
+	if (stack->print_stack)
 	{
 		ft_printf("Pre-sorted array: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);
@@ -72,11 +84,11 @@ void		sort(t_stack *stack)
 		return (basic_sort(stack));
 	else
 		global_sort(stack);
-	if (stack->print)
+	if (stack->print_stack)
 	{
 		ft_printf("Sorted array: ");
 		ft_print_int_array(stack->stack_a, stack->a_size);
 	}
 	if (stack->total)
-		ft_printf("Total: %d operations\n", stack->total_instr);
+		ft_printf("Total %d operations\n", stack->total_instr);
 }

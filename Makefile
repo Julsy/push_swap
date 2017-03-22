@@ -6,7 +6,7 @@
 #    By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/02 12:28:41 by iiliuk            #+#    #+#              #
-#    Updated: 2017/03/21 14:24:59 by iiliuk           ###   ########.fr        #
+#    Updated: 2017/03/21 15:00:32 by iiliuk           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC1 	= push_swap.c parse_args.c apply_instr.c apply_rr.c apply_rrr.c \
 basic_sort.c global_sort.c stack_manipulations.c sort_helper.c
 
 SRC2 	= checker.c parse_args.c apply_instr.c apply_rr.c apply_rrr.c \
-basic_sort.c global_sort.c stack_manipulations.c sort_helper.c
+stack_manipulations.c
 
 .PHONY: all clean fclean re
 

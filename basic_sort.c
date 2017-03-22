@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 14:58:59 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/21 15:14:20 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/22 16:50:03 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	basic_sort_a(t_stack *stack)
 {
-	int max_idx;
+	register int max_idx;
 
 	if (stack->a_size == 1)
 		return ;
@@ -38,7 +38,7 @@ static void	basic_sort_a(t_stack *stack)
 
 static void	basic_sort_b(t_stack *stack)
 {
-	int max_idx;
+	register int max_idx;
 
 	if (stack->b_size == 1)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 14:19:46 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/21 14:20:04 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/22 16:52:56 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int 	find_min_index(int *stack, int len)
 {
-	int i;
-	int tmp;
-	int index;
+	register int i;
+	register int tmp;
+	register int index;
 
 	if (len == 0)
 		return (-1);
@@ -37,9 +37,9 @@ int 	find_min_index(int *stack, int len)
 
 int 	find_max_index(int *stack, int len)
 {
-	int i;
-	int tmp;
-	int index;
+	register int i;
+	register int tmp;
+	register int index;
 
 	if (len == 0)
 		return (-1);
@@ -60,9 +60,9 @@ int 	find_max_index(int *stack, int len)
 
 int 	find_min_elem(int *stack, int stack_len)
 {
-	int i;
-	int tmp;
-	int index;
+	register int i;
+	register int tmp;
+	register int index;
 
 	if (stack_len == 0)
 		return (-1);
@@ -106,7 +106,7 @@ int 	find_max_elem(int *stack, int stack_len)
 
 void	place_smallest_first_a(t_stack *stack)
 {
-	int 	min_index;
+	register int min_index;
 
 	min_index = find_min_index(stack->stack_a, stack->a_size);
 	if (min_index <= stack->a_size / 2)
@@ -122,7 +122,7 @@ void	place_smallest_first_a(t_stack *stack)
 
 void	place_biggest_first_b(t_stack *stack)
 {
-	int 	max_index;
+	register int max_index;
 
 	while ((max_index = find_max_index(stack->stack_b, stack->b_size)) != 0)
 	{
@@ -135,7 +135,7 @@ void	place_biggest_first_b(t_stack *stack)
 
 void	place_biggest_first_a(t_stack *stack)
 {
-	int 	max_index;
+	register int max_index;
 
 	while ((max_index = find_max_index(stack->stack_a, stack->a_size)) != 0)
 	{

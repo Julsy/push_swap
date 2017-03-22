@@ -21,10 +21,10 @@ int		all_the_way_front(int len, int pos, char **a_rot_type)
 
 int		find_placement(int *stack, int len, int elem, char **rot_type)
 {
-	int i;
-	int min;
-	int max;
-	int place;
+	register int i;
+	register int min;
+	register int max;
+	register int place;
 
 	i = 0;
 	place = 0;
@@ -62,10 +62,10 @@ int		find_placement(int *stack, int len, int elem, char **rot_type)
 
 int		where_to_insert(int *stack, int len, int elem, char **rot_type)
 {
-	int i;
-	int min;
-	int max;
-	int place;
+	register int i;
+	register int min;
+	register int max;
+	register int place;
 
 	i = 0;
 	min = find_min_elem(stack, len);
@@ -107,7 +107,7 @@ int		where_to_insert(int *stack, int len, int elem, char **rot_type)
 
 int		find_common(t_moves *moves)
 {
-	int		common;
+	register int		common;
 
 	common = 0;
 	if ((ft_strequ(moves->a_rot_type, "rra") && (ft_strequ(moves->b_rot_type , "rrb"))) ||
@@ -144,9 +144,9 @@ t_moves	*calc_moves_from_a_to_b(t_stack *stack, int pos)
 
 t_moves	*best_way_from_a_to_b(t_stack *stack)
 {
-	int		i;
-	t_moves *best_move;
-	t_moves *moves;
+	register int	i;
+	t_moves			*best_move;
+	t_moves			*moves;
 
 	i = 0;
 	while (i < stack->a_size)
@@ -169,8 +169,8 @@ t_moves	*best_way_from_a_to_b(t_stack *stack)
 
 void	insert_back_to_a(t_stack *stack)
 {
-	int num_of_rots;
-	char *rot_type;
+	register int	num_of_rots;
+	char			*rot_type;
 
 	num_of_rots = 0;
 	rot_type = ft_strnew(3);
@@ -197,8 +197,8 @@ void	insert_back_to_a(t_stack *stack)
 
 int 	can_rotate(int *arr, int len)
 {
-	int i;
-	int last;
+	register int i;
+	register int last;
 
 	i = len;
 	last = 0;

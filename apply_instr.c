@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 13:12:24 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/21 17:10:11 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/22 16:49:04 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void 	apply_sa(t_stack *stack)
 {
-	int tmp;
+	register int tmp;
 
 	if (stack->a_size < 2)
 		return ;
@@ -37,7 +37,7 @@ void 	apply_sa(t_stack *stack)
 
 void 	apply_sb(t_stack *stack)
 {
-	int tmp;
+	register int tmp;
 
 	if (stack->b_size < 2)
 		return ;
@@ -60,8 +60,8 @@ void 	apply_sb(t_stack *stack)
 
 void 	apply_ss(t_stack *stack)
 {
-	int tmp_instr;
-	int tmp_stack;
+	register int tmp_instr;
+	register int tmp_stack;
 
 	tmp_stack = stack->print_stack;
 	tmp_instr = stack->print_instr;
@@ -87,7 +87,7 @@ void 	apply_ss(t_stack *stack)
 
 void 	apply_pa(t_stack *stack)
 {
-	int i;
+	register int i;
 
 	if (stack->b_size == 0)
 		return ;
@@ -116,7 +116,7 @@ void 	apply_pa(t_stack *stack)
 
 void 	apply_pb(t_stack *stack)
 {
-	int i;
+	register int i;
 
 	if (stack->a_size == 0)
 		return ;

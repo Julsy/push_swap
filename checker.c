@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 13:00:39 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/21 15:10:51 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/22 16:50:21 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ void		do_instruction(t_stack *stack)
 
 int			main(int argc, char **argv)
 {
-	t_stack *stack;
-	int		options;
+	t_stack			*stack;
+	register int	options;
+	
 	(argc-- == 1) ? exit(0) : argv++;
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	options = parse_options(&argc, &argv, stack);

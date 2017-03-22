@@ -195,15 +195,45 @@ void	insert_back_to_a(t_stack *stack)
 	free(rot_type);
 }
 
+int 	can_rotate(int *arr, int len)
+{
+	int i;
+	int last;
+
+	i = len;
+	last = 0;
+
+	while(--i >= 0)
+	{
+		if(arr[i] > arr[i-1])
+		{
+			i--;
+			break;
+		}
+		last++;
+	}
+
+	while(i != len - 1 - last) 
+	{
+		if(arr[i] < arr[i-1] || (i == 0 && arr[0] <= arr[len-1]))
+			return 0;
+		i--;
+		if(i<0)
+			i=len;
+	}
+	return (arr[i] >= arr[len-1] ? last +1 : 0);
+}
+
 void		global_sort(t_stack *stack)
 {
 	t_moves *best_move;
 
+	place_smallest_first_a(stack);
 	while (stack->b_size != 2)
 		apply_pb(stack);
 	//ft_print_int_array(stack->stack_a, stack->a_size);
 	//ft_print_int_array(stack->stack_b, stack->b_size);
-	while (stack->a_size > 2)
+	while (stack->a_size > 2)// && !(can_rotate(stack->stack_a, stack->a_size) || is_sorted(stack->stack_a, stack->a_size)))
 	{
 		best_move = best_way_from_a_to_b(stack);
 		//printf("best move chosen: %d\n", best_move->elem);

@@ -7,3 +7,11 @@ Restrictions:
 4. no more than 5300 operations for 500 integers
 
 Subject   [push_swap.pdf](https://github.com/Julsy/push_swap/files/863659/push_swap.pdf)
+
+To test:
+1. clone repo
+2. make re
+3. sh testpushswap.sh 3 10
+
+3 - as how many random numbers to generate,
+10 - as how many times to run the test

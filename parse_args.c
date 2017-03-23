@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:26:09 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/22 16:52:12 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/23 12:22:05 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void		init_stack_struct(t_stack *stack, int argc)
 	stack->a_size = argc;
 	stack->b_size = 0;
 	stack->total_instr = 0;
+	stack->print_instr = 1;
 }
 
 int			parse_options(int *argc, char ***argv, t_stack *stack)
@@ -49,8 +50,9 @@ int			parse_options(int *argc, char ***argv, t_stack *stack)
 
 	i = 0;
 	stack->total = 0;
+	stack->color = 0;
 	stack->print_stack = 0;
-	while (i < *argc  && *((*argv)[i]) == '-')
+	while (i < *argc && *((*argv)[i]) == '-')
 	{
 		if (ft_strequ((*argv)[i], "-v"))
 			stack->print_stack = 1;
@@ -61,12 +63,11 @@ int			parse_options(int *argc, char ***argv, t_stack *stack)
 		else
 		{
 			ft_putstr_fd("Error\n", 2);
-			ft_putstr_fd("usage: ./push_swap or ./checker [-v -c] [numbers...]\n", 2);
+			ft_putstr_fd("usage: ./push_swap [-v -c -t] [numbers...]\n", 2);
 			exit(1);
 		}
 		i++;
 	}
-	stack->print_instr = 1;
 	*argc -= i;
 	*argv += i;
 	return (i);

@@ -18,13 +18,18 @@
 #include <stdio.h>
 # include <limits.h>
 
+# define MAG "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define BLUE "\033[0;34m"
+# define NC "\033[0m"
+
 typedef struct	s_stack
 {
 	int 		*stack_a;
 	int 		*stack_b;
 	int			a_size;
 	int			b_size;
-	int			color;
+	int			color; ////??????
 	int			total;
 	int			print_stack;
 	int			total_instr;
@@ -56,19 +61,17 @@ void 	apply_rrb(t_stack *stack);
 void 	apply_rrr(t_stack *stack);
 
 void	sort(t_stack *stack);
-void	basic_sort(t_stack *stack);
 void	global_sort(t_stack *stack);
+t_moves	*best_way_from_a_to_b(t_stack *stack);
+
+int		find_a_rot_type(int len, int pos, char **a_rot_type);
+int		find_b_rot_type(int len, int pos, char **b_rot_type);
 
 int 	find_min_elem(int *stack, int stack_len);
 int 	find_max_elem(int *stack, int stack_len);
 int 	find_min_index(int *stack, int len);
 int 	find_max_index(int *stack, int len);
 void	place_smallest_first_a(t_stack *stack);
-void	place_biggest_first_b(t_stack *stack);
-void	place_biggest_first_a(t_stack *stack);
-
-void	insert_back_to_a(t_stack *stack);
-int		where_to_insert(int *stack, int len, int elem, char **rot_type);
 
 int		is_sorted(int *stack, int len);
 int		is_reverse_sorted(int *stack, int len);

@@ -119,29 +119,3 @@ void	place_smallest_first_a(t_stack *stack)
 			min_index++;
 		}
 }
-
-void	place_biggest_first_b(t_stack *stack)
-{
-	register int max_index;
-
-	while ((max_index = find_max_index(stack->stack_b, stack->b_size)) != 0)
-	{
-		if (max_index <= stack->b_size / 2)
-			apply_rb(stack);
-		else
-			apply_rrb(stack);
-	}
-}
-
-void	place_biggest_first_a(t_stack *stack)
-{
-	register int max_index;
-
-	while ((max_index = find_max_index(stack->stack_a, stack->a_size)) != 0)
-	{
-		if (max_index <= stack->a_size / 2)
-			apply_ra(stack);
-		else
-			apply_rra(stack);
-	}
-}

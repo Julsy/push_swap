@@ -16,7 +16,8 @@ NAME2	= checker
 CFLAGS 	= -Wall -Wextra -Werror -g
 
 SRC1 	= push_swap.c parse_args.c apply_instr.c apply_rr.c apply_rrr.c \
-basic_sort.c global_sort.c stack_manipulations.c sort_helper.c
+begin_sort.c global_sort.c stack_manipulations.c sort_helper.c \
+rotation_type.c best_way_from_a_to_b.c
 
 SRC2 	= checker.c parse_args.c apply_instr.c apply_rr.c apply_rrr.c \
 stack_manipulations.c

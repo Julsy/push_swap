@@ -56,6 +56,8 @@ int			parse_options(int *argc, char ***argv, t_stack *stack)
 			stack->print_stack = 1;
 		else if (ft_strequ((*argv)[i], "-t"))
 			stack->total = 1;
+		else if (ft_strequ((*argv)[i], "-c"))
+			stack->color = 1;
 		else
 		{
 			ft_putstr_fd("Error\n", 2);

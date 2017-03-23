@@ -6,7 +6,7 @@
 /*   By: iiliuk <iiliuk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 13:00:39 by iiliuk            #+#    #+#             */
-/*   Updated: 2017/03/22 16:50:21 by iiliuk           ###   ########.fr       */
+/*   Updated: 2017/03/22 17:21:27 by iiliuk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	get_instruction(t_stack *stack, char *instr)
 	return (0);
 }
 
-void		do_instruction(t_stack *stack)
+static void	do_instruction(t_stack *stack)
 {
 	char 	*instr;
 
@@ -57,39 +57,40 @@ void		do_instruction(t_stack *stack)
 			exit(1);
 		}
 		free(instr);
-		instr = ft_strnew(4);
+		instr = NULL; // instead of ft_strnew(4)
 	}
 	free(instr);
+}
+
+static void	split_args(int argc, char **argv, t_stack *stack)
+{
+	argv = ft_strsplit(argv[0], ' ');
+	argc = 0;
+	while (argv && argv[argc])
+		argc++;
+	if (argc == 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		free(stack);
+		exit(1);
+	}
 }
 
 int			main(int argc, char **argv)
 {
 	t_stack			*stack;
 	register int	options;
-	
+
 	(argc-- == 1) ? exit(0) : argv++;
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	options = parse_options(&argc, &argv, stack);
 	if (argc == 1)
-	{
-		argv = ft_strsplit(argv[0], ' ');
-		argc = 0;
-		while (argv && argv[argc])
-			argc++;
-		if (argc == 0)
-		{
-			ft_putstr_fd("Error\n", 2);
-			free(stack);
-			exit(1);
-		}
-	}
+		split_args(argc, argv, stack);
 	init_stack_struct(stack, argc);
 	stack = parse_args(argc, argv, stack);
-	//ft_print_int_array(stack->stack_a, stack->a_size);
 	stack->print_instr = 0;
 	if (!(is_sorted(stack->stack_a, stack->a_size)))
 		do_instruction(stack);
-	//ft_print_int_array(stack->stack_a, stack->a_size);
 	if (is_sorted(stack->stack_a, stack->a_size))
 		ft_putstr("OK\n");
 	else

@@ -6,4 +6,4 @@ Restrictions:
 3. no more than 700 operations for 100 integers
 4. no more than 5300 operations for 500 integers
 
-Subject [push_swap.pdf](https://github.com/Julsy/push_swap/files/863659/push_swap.pdf)
+Subject   [push_swap.pdf](https://github.com/Julsy/push_swap/files/863659/push_swap.pdf)

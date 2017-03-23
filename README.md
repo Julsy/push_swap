@@ -11,7 +11,7 @@ Subject   [push_swap.pdf](https://github.com/Julsy/push_swap/files/863659/push_s
 To test:
 1. clone repo
 2. make re
-3. sh testpushswap.sh 3 10
+3. sh testpushswap.sh 5 10
 
-3 - as how many random numbers to generate,
+5 - as how many random numbers to generate,
 10 - as how many times to run the test
